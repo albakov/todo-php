@@ -39,7 +39,7 @@ class TaskController extends BaseController
                 $this->redirect("/create?error={$k}");
             }
 
-            $postFields[$k] = $_POST[$k];
+            $postFields[$k] = htmlentities($_POST[$k]);
         }
 
         (new Task)->add($postFields);
@@ -86,7 +86,7 @@ class TaskController extends BaseController
                 $this->redirect("/edit?id={$_GET['id']}&error={$k}");
             }
 
-            $postFields[$k] = $_POST[$k];
+            $postFields[$k] = htmlentities($_POST[$k]);
         }
 
         (new Task)->update($id, $postFields);
