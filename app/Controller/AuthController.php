@@ -9,7 +9,7 @@ class AuthController extends BaseController
         'password' => '123'
     ];
 
-    private $fields = [
+    protected $fields = [
         'name' => [
             'label' => 'Имя',
             'type' => 'text'
@@ -27,8 +27,9 @@ class AuthController extends BaseController
         }
 
         $fields = $this->fields;
+        $errors = $this->getErrors();
 
-        TemplateController::render('pages/login', compact('fields'));
+        TemplateController::render('pages/login', compact('fields', 'errors'));
     }
 
     public function auth()

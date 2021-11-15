@@ -6,7 +6,7 @@ use TodoPhp\Model\Task;
 
 class TaskController extends BaseController
 {
-    private $fields = [
+    protected $fields = [
         'user_name' => [
             'label' => 'Имя',
             'type' => 'text'
@@ -24,8 +24,9 @@ class TaskController extends BaseController
     public function create()
     {
         $fields = $this->fields;
+        $errors = $this->getErrors();
 
-        TemplateController::render('pages/create', compact('fields'));
+        TemplateController::render('pages/create', compact('fields', 'errors'));
     }
 
     public function store()
@@ -63,7 +64,9 @@ class TaskController extends BaseController
             $this->redirect('/not-found');
         }
 
-        TemplateController::render('pages/edit', compact('item', 'fields', 'id'));
+        $errors = $this->getErrors();
+
+        TemplateController::render('pages/edit', compact('item', 'fields', 'id', 'errors'));
     }
 
     public function update()

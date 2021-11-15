@@ -1,9 +1,7 @@
-<?php if (isset($_GET['error']) && !empty($_GET['error'])): ?>
+<?php if (count($errors) > 0): ?>
     <div class="alert alert-danger" role="alert">
-        <?php foreach ($fields as $key => $field): ?>
-            <?php if ($key === $_GET['error']): ?>
-                Проверьте поле <?php echo $field['label']; ?>
-            <?php endif; ?>
+        <?php foreach ($errors as $error): ?>
+            <?php echo $error; ?>
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
