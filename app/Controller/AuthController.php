@@ -4,6 +4,11 @@ namespace TodoPhp\Controller;
 
 class AuthController extends BaseController
 {
+    private $credits = [
+        'login' => 'admin',
+        'password' => '123'
+    ];
+
     private $fields = [
         'name' => [
             'label' => 'Имя',
@@ -36,7 +41,7 @@ class AuthController extends BaseController
             }
         }
 
-        if ($_POST['name'] !== 'admin' || $_POST['password'] !== '123') {
+        if ($_POST['name'] !== $this->credits['name'] || $_POST['password'] !== $this->credits['password']) {
             $this->redirect("/login?error=password");
         }
 
