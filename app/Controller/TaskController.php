@@ -19,6 +19,10 @@ class TaskController extends BaseController
             'label' => 'Текст',
             'type' => 'textarea'
         ],
+        'status' => [
+            'label' => 'Статус',
+            'type' => 'select'
+        ],
     ];
 
     public function create()
@@ -63,7 +67,7 @@ class TaskController extends BaseController
             $this->redirect('/not-found');
         }
 
-        TemplateController::render('pages/edit', compact('item', 'fields'));
+        TemplateController::render('pages/edit', compact('item', 'fields', 'id'));
     }
 
     public function update()
@@ -75,14 +79,17 @@ class TaskController extends BaseController
         $id = $this->getItemIdFromRequestOrFail();
 
         $fields = array_keys($this->fields);
+        $postFields = [];
 
         foreach ($fields as $k) {
             if (!isset($_POST[$k]) || $_POST[$k] === '') {
                 $this->redirect("/edit?id={$_GET['id']}&error={$k}");
             }
+
+            $postFields[$k] = $_POST[$k];
         }
 
-        (new Task)->update($id, $_POST);
+        (new Task)->update($id, $postFields);
 
         $this->redirect("/edit?id={$_GET['id']}");
     }
