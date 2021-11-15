@@ -29,8 +29,9 @@ class HomeController extends BaseController
 
         $sortFields = $this->sortFields;
         $isAdmin = $this->isAdmin();
+        $perPage = $this->perPage;
 
-        TemplateController::render('pages/index', compact('items', 'total', 'sortFields', 'isAdmin', 'requestedSort', 'requestedPage'));
+        TemplateController::render('pages/index', compact('items', 'total', 'sortFields', 'isAdmin', 'requestedSort', 'requestedPage', 'perPage'));
     }
 
     private function getPage()
