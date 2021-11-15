@@ -19,8 +19,9 @@ class HomeController extends BaseController
 
     public function index()
     {
-        $requestedSort = $this->getSort();
         $requestedPage = $this->getPage();
+        $requestedSort = $this->getSort();
+        $requestedSort = implode(':', $requestedSort);
 
         $task = new Task;
         $total = $task->total();

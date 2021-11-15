@@ -21,7 +21,7 @@
                         <select name="sort" class="form-select">
                             <option value="">Сортировка</option>
                             <?php foreach ($sortFields as $k => $sortField): ?>
-                                <option value="<?php echo $k; ?>" <?php echo $requestedSort[0] === $k ? 'selected' : ''; ?>>
+                                <option value="<?php echo $k; ?>" <?php echo $requestedSort === $k ? 'selected' : ''; ?>>
                                     <?php echo $sortField; ?>
                                 </option>
                             <?php endforeach; ?>
