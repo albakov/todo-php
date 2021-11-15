@@ -5,7 +5,7 @@ namespace TodoPhp\Controller;
 class AuthController extends BaseController
 {
     private $credits = [
-        'login' => 'admin',
+        'name' => 'admin',
         'password' => '123'
     ];
 
