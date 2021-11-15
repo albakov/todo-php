@@ -24,7 +24,7 @@ class Task
 
     public function get(array $sort, int $offset, int $limit)
     {
-        $stmt = $this->db()->prepare("select id, user_name, user_email, task_text, status from {$this->table} order by {$sort[0]} {$sort[1]} limit :offset, :limit");
+        $stmt = $this->db()->prepare("select id, user_name, user_email, task_text, edit, status from {$this->table} order by {$sort[0]} {$sort[1]} limit :offset, :limit");
         $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
         $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
         $stmt->execute();

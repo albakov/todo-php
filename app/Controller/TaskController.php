@@ -77,6 +77,13 @@ class TaskController extends BaseController
 
         $id = $this->getItemIdFromRequestOrFail();
 
+        $task = new Task;
+        $item = $task->getById($id);
+
+        if (!$item) {
+            $this->redirect('/not-found');
+        }
+
         $fields = array_keys($this->fields);
         $fields[] = 'status';
         $postFields = [];
@@ -87,6 +94,10 @@ class TaskController extends BaseController
             }
 
             $postFields[$k] = htmlentities($_POST[$k]);
+        }
+
+        if ($item['task_text'] !== $postFields['task_text']) {
+            $postFields['edit'] = 1;
         }
 
         (new Task)->update($id, $postFields);
