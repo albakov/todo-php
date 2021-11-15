@@ -19,10 +19,6 @@ class TaskController extends BaseController
             'label' => 'Текст',
             'type' => 'textarea'
         ],
-        'status' => [
-            'label' => 'Статус',
-            'type' => 'select'
-        ],
     ];
 
     public function create()
@@ -79,6 +75,7 @@ class TaskController extends BaseController
         $id = $this->getItemIdFromRequestOrFail();
 
         $fields = array_keys($this->fields);
+        $fields[] = 'status';
         $postFields = [];
 
         foreach ($fields as $k) {

@@ -14,20 +14,22 @@
                             <?php if ($field['type'] === 'textarea'): ?>
                                 <textarea class="form-control" name="<?php echo $key; ?>" id="<?php echo $key; ?>" rows="3"
                                           placeholder="<?php echo $field['label']; ?>" required><?php echo $item[$key]; ?></textarea>
-                            <?php elseif ($field['type'] === 'select'): ?>
-                                <select name="status" class="form-select" id="status">
-                                    <?php foreach (['Выполнено', 'Не выполнено'] as $k => $v): ?>
-                                        <option value="<?php echo $k; ?>" <?php echo $k === (int)$item['status'] ? 'selected' : ''; ?>>
-                                            <?php echo $v; ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
                             <?php else: ?>
                                 <input type="<?php echo $field['type']; ?>" class="form-control" name="<?php echo $key; ?>" id="<?php echo $key; ?>"
                                        placeholder="<?php echo $field['label']; ?>" required value="<?php echo $item[$key]; ?>">
                             <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Статус</label>
+                        <select name="status" class="form-select" id="status">
+                            <?php foreach (['Выполнено', 'Не выполнено'] as $k => $v): ?>
+                                <option value="<?php echo $k; ?>" <?php echo $k === (int)$item['status'] ? 'selected' : ''; ?>>
+                                    <?php echo $v; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                     <div class="mb-3">
                         <a href="/" class="btn btn-light">Отмена</a>
                         <button type="submit" class="btn btn-success">Обновить</button>
