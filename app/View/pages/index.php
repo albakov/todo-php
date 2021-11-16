@@ -39,7 +39,7 @@
                             <p class="mb-1"><?php echo $item['task_text']; ?></p>
                             <?php if ((int)$item['edit'] === 1): ?>
                                 <div class="mb-1">
-                                    <i class="small">[Отредактировано]</i>
+                                    <i class="small">[отредактировано администратором]</i>
                                 </div>
                             <?php endif; ?>
                             <?php if ($isAdmin): ?>
