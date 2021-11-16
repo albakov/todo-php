@@ -65,8 +65,9 @@ class TaskController extends BaseController
         }
 
         $errors = $this->getErrors();
+        $isUpdated = $this->isTaskUpdated();
 
-        TemplateController::render('pages/edit', compact('item', 'fields', 'id', 'errors'));
+        TemplateController::render('pages/edit', compact('item', 'fields', 'id', 'errors', 'isUpdated'));
     }
 
     public function update()
@@ -102,7 +103,7 @@ class TaskController extends BaseController
 
         (new Task)->update($id, $postFields);
 
-        $this->redirect("/edit?id={$_GET['id']}");
+        $this->redirect("/edit?id={$_GET['id']}&updated=1");
     }
 
     private function getItemIdFromRequestOrFail(): ?int
@@ -114,5 +115,10 @@ class TaskController extends BaseController
         }
 
         return $id;
+    }
+
+    private function isTaskUpdated()
+    {
+        return isset($_GET['updated']) && !empty($_GET['updated']);
     }
 }

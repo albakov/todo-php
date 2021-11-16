@@ -21,22 +21,20 @@ class BaseController
     {
         $errors = [];
         $error = isset($_GET['error']) && !empty($_GET['error']) ? $_GET['error'] : null;
+        $errorMessage = isset($_GET['error_message']) && !empty($_GET['error_message']) ? $_GET['error_message'] : null;
 
-        if (is_null($error)) {
-            return $errors;
-        }
-
-        foreach ($this->fields as $key => $field) {
-            if ($key === $_GET['error']) {
-                $errors[] = "Проверьте поле {$field['label']}";
+        if (!empty($error)) {
+            foreach ($this->fields as $key => $field) {
+                if ($key === $_GET['error']) {
+                    $errors[] = "Проверьте поле {$field['label']}";
+                }
             }
         }
 
-        return $errors;
-    }
+        if (!empty($errorMessage)) {
+            $errors[] = $errorMessage;
+        }
 
-    protected function getErrorMessage(): string
-    {
-        return isset($_GET['error_message']) && !empty($_GET['error_message']) ? $_GET['error_message'] : '';
+        return $errors;
     }
 }

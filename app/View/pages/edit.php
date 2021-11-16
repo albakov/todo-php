@@ -5,6 +5,7 @@
             <h1 class="mb-4">Редактирование задачи</h1>
 
             <?php include_once __DIR__ . '/../parts/errors.php'; ?>
+            <?php include_once __DIR__ . '/../parts/task-updated-message.php'; ?>
 
             <form action="/update?id=<?php echo $id; ?>" class="form" method="post">
                 <div class="form-group">

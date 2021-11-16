@@ -28,9 +28,8 @@ class AuthController extends BaseController
 
         $fields = $this->fields;
         $errors = $this->getErrors();
-        $errorMessage = $this->getErrorMessage();
 
-        TemplateController::render('pages/login', compact('fields', 'errors', 'errorMessage'));
+        TemplateController::render('pages/login', compact('fields', 'errors'));
     }
 
     public function auth()
