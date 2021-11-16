@@ -15,6 +15,8 @@
                 </div>
             </div>
 
+            <?php include_once __DIR__ . '/../parts/success.php'; ?>
+
             <?php if (count($items) > 0): ?>
                 <form action="/" method="get" class="mb-3">
                     <div class="input-group w-auto ms-auto">

@@ -44,7 +44,7 @@ class TaskController extends BaseController
 
         (new Task)->add($postFields);
 
-        $this->redirect('/');
+        $this->redirect('/?created=1');
     }
 
     public function edit()
