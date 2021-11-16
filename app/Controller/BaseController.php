@@ -34,4 +34,9 @@ class BaseController
 
         return $errors;
     }
+
+    protected function getErrorMessage(): string
+    {
+        return isset($_GET['error_message']) && !empty($_GET['error_message']) ? $_GET['error_message'] : '';
+    }
 }

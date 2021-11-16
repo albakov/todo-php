@@ -28,8 +28,9 @@ class AuthController extends BaseController
 
         $fields = $this->fields;
         $errors = $this->getErrors();
+        $errorMessage = $this->getErrorMessage();
 
-        TemplateController::render('pages/login', compact('fields', 'errors'));
+        TemplateController::render('pages/login', compact('fields', 'errors', 'errorMessage'));
     }
 
     public function auth()
@@ -43,7 +44,7 @@ class AuthController extends BaseController
         }
 
         if ($_POST['name'] !== $this->credits['name'] || $_POST['password'] !== $this->credits['password']) {
-            $this->redirect("/login?error=password");
+            $this->redirect('/login?error_message=Логин или пароль не верны!');
         }
 
         $_SESSION['auth_user'] = 1;

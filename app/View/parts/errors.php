@@ -5,3 +5,9 @@
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
+
+<?php if (!empty($errorMessage)): ?>
+    <div class="alert alert-danger" role="alert">
+        <?php echo $errorMessage; ?>
+    </div>
+<?php endif; ?>
